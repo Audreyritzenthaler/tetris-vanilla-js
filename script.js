@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let nextRandom = 0
     let timerId
     let score = 0
+    const colors = [
+        'orange',
+        'red',
+        'purple',
+        'green',
+        'blue'
+    ]
 
 
     // Shape of tetrominoes
@@ -60,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function draw() {
         current.forEach(i => {
             squares[currentPosition + i].classList.add('tetromino')
+            squares[currentPosition + i].style.backgroundColor = colors[random]
         } )
     }
 
@@ -67,11 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function unDraw() {
         current.forEach( i => {
             squares[currentPosition + i].classList.remove('tetromino')
+            squares[currentPosition + i].style.backgroundColor = ''
         })
     }
-
-    // Make the tetro move down every sec
-    // timerId = setInterval(moveDown, 1000)
 
     // Assign keycode
     function control(e) {
@@ -106,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             draw()
             displayShape()
             addScore()
+            gameOver()
         } 
     }
 
@@ -166,9 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayShape () {
         displaySquares.forEach( squares => {
             squares.classList.remove('tetromino')
+            squares.style.backgroundColor = ''
         })
         upNextTetro[nextRandom].forEach( i => {
             displaySquares[displayIndex + i].classList.add('tetromino')
+            displaySquares[displayIndex + i].style.backgroundColor = colors[nextRandom]
         })
     }
 
@@ -195,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.forEach( i => {
                     squares[i].classList.remove('taken')
                     squares[i].classList.remove('tetromino')
+                    squares[i].style.backgroundColor = ''
                 })
                 const squaresRemoved = squares.splice(i, width)
                 squares = squaresRemoved.concat(squares)
@@ -203,9 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // function gameOver() {
-    //     if(current)
-    // }
+    function gameOver() {
+        if(current.some( i => squares[currentPosition + i].classList.contains('taken'))) {
+            scoreDisplay.innerHTML = 'end'
+            clearInterval(timerId)
+        }
+    }
 
 
 
