@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId
     let score = 0
     const colors = [
-        'orange',
-        'red',
-        'purple',
-        'green',
-        'blue'
+        '#E0BB7B',
+        '#B08792',
+        '#896199',
+        '#8DAD97',
+        '#5F8F99'
     ]
 
 

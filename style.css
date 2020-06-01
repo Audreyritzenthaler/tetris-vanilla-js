@@ -1,14 +1,18 @@
 .container {
     display: flex;
-    
+    flex-flow: row nowrap;
+    justify-content: center;
 }
 
 .grid {
     width: 200px;
     height: 400px;
-    background-color: rgb(236, 236, 122);
+    background-color: rgb(223, 223, 223);
     display: flex;
     flex-wrap: wrap;
+    margin: 0 100px;
+    border-radius: 10px;
+    border: solid 3px rgb(133, 133, 133);
 }
 
 .grid div {
@@ -19,15 +23,17 @@
 
 .tetromino {
     background-color: cadetblue;
+    border-radius: 3px;
 }
 
 .mini-grid {
     width: 80px;
     height: 80px;
-    margin-left: 50px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(236, 236, 122);
+    background-color: rgb(223, 223, 223);
+    border-radius: 10px;
+    border: solid 3px rgb(133, 133, 133);
 }
 
 .mini-grid div {
