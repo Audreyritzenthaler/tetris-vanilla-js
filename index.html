@@ -7,7 +7,13 @@
     <title>Tetris</title>
 </head>
 <body>
-    <audio><source src="tetris.mp3" type="audio/mpeg" /></audio>
+    <div id="player">
+        <audio autoplay>
+            <embed name="GoodEnough" src="/music/good_enough.mp3" loop="false" hidden="true" autostart="true">
+            <source src="music/tetris.mp3" type="audio/mpeg">
+            <p>If you're reading this, audio isn't supported.</p> 
+        </audio>
+    </div>
 
     <h3>Score: <span id="score">0</span></h3>
     <button id="start-button">Start</button>
